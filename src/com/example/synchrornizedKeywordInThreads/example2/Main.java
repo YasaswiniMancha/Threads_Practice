@@ -1,4 +1,4 @@
-package com.example.synchornized.example2;
+package com.example.synchrornizedKeywordInThreads.example2;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package com.example.synchornized.example1;
+package com.example.synchrornizedKeywordInThreads.example1;
 
 public class BankAccount {
 

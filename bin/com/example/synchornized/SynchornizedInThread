@@ -1,0 +1,8 @@
+Synchronization (Shared Resource Problem)
+------------------------------------------
+Multiple threads okesari shared data ni access cheste, race condition vastundi. 
+Idi avoid cheyyadaniki synchronized keyword use chestam.
+
+Example: Oka bank account lo 1000 Rs vundi. 
+2 threads okesari 800 Rs withdraw cheyyalanukunte, problem vastundi—account lo minus balance avvochu. 
+Synchronization tho fix cheyyali.

@@ -1,0 +1,60 @@
+Threads Ante Enti?
+Threads ante oka program lo chinnaga, separate ga run ayye parts ani artham. Oka bada program vunte, adi okesari anni tasks ni cheyyakunda, konni tasks ni alaga alaga split chesi, parallel ga execute cheyyadaniki threads use chestam. Idi time save cheyyadaniki, efficiency penchadaniki help chestundi.
+
+Example:  oka phone vundi, dantlo okesari call cheyyali, message type cheyyali, music play cheyyali ante, oka thread tho adi slow avtundi. Kani threads vunte, call ki okati, message ki okati, music ki okati separate ga run avtayi—smooth ga work avtundi.
+
+Java lo Threads Ela Use Cheyyali?
+Java lo threads ni mainly 2 ways lo create cheyyochchu:
+
+Thread Class ni Extend Chesi (or)
+Runnable Interface ni Implement Chesi
+
+1. Thread Class Extend Cheyyadam
+Java lo Thread ane class vundi. Dani extend chesi, run() method ni override cheyyali. Aa method lo neeku em task kavalo adi code cheyyali.
+
+
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Nenu thread la run avtunna!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+        t1.start(); // Thread ni start cheyyadaniki
+    }
+}
+
+
+start() call cheste, thread execute avtundi. run() direct ga call cheste thread work cheyadu, normal method laga run avtundi.
+
+
+2. Runnable Interface Use Cheyyadam
+Runnable interface lo okka method vundi—run(). Dani implement chesi, thread ni create cheyyali.
+
+class MyRunnable implements Runnable {
+    public void run() {
+        System.out.println("Nenu Runnable tho run avtunna!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyRunnable r = new MyRunnable();
+        Thread t1 = new Thread(r);
+        t1.start();
+    }
+}
+
+Ee method lo Thread class ki Runnable object pass chesi start chestam.
+-----------------------------------------------------------------------------------------
+
+1. Thread Life Cycle
+Thread ki oka life cycle vundi, idi 5 stages lo vuntundi:
+
+New: Thread create ainappudu (Ex: Thread t1 = new Thread();).
+Runnable: start() call chesinappudu, thread run avvaadaniki ready avtundi (kani CPU allocate avvaledu).
+Running: CPU thread ki allocate ayina time lo run() method execute avtundi.
+Blocked/Waiting: Thread wait chestundi (Ex: sleep(), wait(), or vere thread complete avvadaniki).
+Terminated/Dead: run() method complete ayina tarwata thread dead avtundi.

@@ -1,0 +1,35 @@
+Synchronization (Shared Resource Problem)
+------------------------------------------
+Multiple threads okesari shared data ni access cheste, race condition vastundi. 
+Idi avoid cheyyadaniki synchronized keyword use chestam.
+so, synchronized valla race condition avoid avtundi—
+
+Example: Oka bank account lo 1000 Rs vundi. 
+2 threads okesari 800 Rs withdraw cheyyalanukunte, problem vastundi—account lo minus balance avvochu. 
+Synchronization tho fix cheyyali.
+
+
+Without Synchronization Ela Untundi?
+-----------------------------------
+void withdraw(int amount) { // No synchronized
+    System.out.println(Thread.currentThread().getName() + " trying to withdraw " + amount);
+    if (balance >= amount) {
+        System.out.println(Thread.currentThread().getName() + " withdrawing " + amount);
+        balance = balance - amount;
+        System.out.println("New balance: " + balance);
+    } else {
+        System.out.println("Sorry, " + Thread.currentThread().getName() + " - not enough balance!");
+    }
+    
+}
+
+o/p:
+----
+Person-1 trying to withdraw 800
+Person-2 trying to withdraw 800
+Person-1 withdrawing 800
+Person-2 withdrawing 800
+New balance: -600
+
+
+

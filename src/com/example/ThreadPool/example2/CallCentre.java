@@ -16,7 +16,11 @@ public class CallCentre {
 		}
 		
 		callCentreStaff.shutdown();
-
+		try {
+		    callCentreStaff.awaitTermination(10, java.util.concurrent.TimeUnit.SECONDS);
+		} catch (InterruptedException e) {
+		    e.printStackTrace();
+		}
 	}
 
 }

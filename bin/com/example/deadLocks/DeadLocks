@@ -1,0 +1,55 @@
+Deadlock ante 2 or more threads okari kosam okaru wait chestu stuck ayipovadam.
+
+Example: Oka friend neeku pen ivvali, nuvvu daniki pencil ivvali. Kani nuvvu "pen ivvu munde pencil istanu" ani, vadu "pencil ivvu munde pen istanu" 
+ani wait chestunnaru—deadlock!
+
+
+Best practices to avoid deadLocks:
+----------------------------------
+
+1. Avoid Nested Locks:
+Oka thread lo multiple locks teesukuntunnav ante, careful ga plan cheyyali.
+
+2. Lock Timeout:
+Java lo tryLock() (from java.util.concurrent.locks.ReentrantLock) use chesi, lock teesukune mundu time limit set cheyyochchu.
+If lock raledu ante, thread wait cheyakunda proceed avtundi.
+
+3. Resource Ordering:
+Resources ni fixed order lo lock cheyyali. Example: Accounts ni lock chesetappudu, always Account ID order lo lock cheyyi.
+
+4. Avoid Waiting Indefinitely:
+wait(), sleep() lanti methods use chestunnappudu, timeouts set cheyyali.
+Example: wait(1000) use cheste, thread forever wait cheyadu.
+
+5. Use Thread Pool:
+ExecutorService lanti thread pools use cheste, threads ni manage cheyyadam easy avtundi, manual locks taggutayi.
+ ex: ExecutorService executor = Executors.newFixedThreadPool(2);
+executor.submit(() -> { /* Task */ });
+
+6. Monitor and Detect Deadlocks:
+Java lo ThreadMXBean use chesi deadlocks ni detect cheyyochchu.
+
+ex:  import java.lang.management.*;
+
+public class DeadlockDetector {
+    public static void main(String[] args) {
+        ThreadMXBean bean = ManagementFactory.getThreadMXBean();
+        long[] deadlockedThreads = bean.findDeadlockedThreads();
+        if (deadlockedThreads != null) {
+            System.out.println("Deadlock detected!");
+        }
+    }
+}
+
+7. Design for Simplicity:
+Complex locking mechanisms vaddu. Oka thread ki single resource lock cheyyadam better.
+Example: Database transactions lo, minimal locks use cheyyali.
+
+
+Deadlocks ni avoid cheyyadaniki ee skills nerchukunte, real-world applications lo baaga help avtundi:
+--------------------------------------------------------------------------------------------------------
+Lock Management: Synchronized blocks, ReentrantLock, Semaphore lanti concepts clear ga nerchukovali.
+Thread Debugging: Deadlock detect cheyyadaniki tools (JConsole, VisualVM) use cheyyali.
+Concurrent Programming: java.util.concurrent package lo ConcurrentHashMap, ExecutorService, ForkJoinPool lanti utilities nerchukovali.
+Design Patterns: Resource ordering, timeout-based locking lanti patterns practice cheyyali.
+Testing: Multi-threaded code ni stress test cheyyali, race conditions ni identify cheyyali.

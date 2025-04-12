@@ -1,0 +1,5 @@
+Lock Management: Synchronized blocks, ReentrantLock, Semaphore lanti concepts clear ga nerchukovali.
+Thread Debugging: Deadlock detect cheyyadaniki tools (JConsole, VisualVM) use cheyyali.
+Concurrent Programming: java.util.concurrent package lo ConcurrentHashMap, ExecutorService, ForkJoinPool lanti utilities nerchukovali.
+Design Patterns: Resource ordering, timeout-based locking lanti patterns practice cheyyali.
+Testing: Multi-threaded code ni stress test cheyyali, race conditions ni identify cheyyali.

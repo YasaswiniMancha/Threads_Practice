@@ -1,0 +1,3 @@
+Lock Management (with Synchronized Blocks, ReentrantLock, Semaphore)
+---------------------------------------------------------------
+Lock management ante shared resources ni safe ga access cheyyadam, without any deadlocks.

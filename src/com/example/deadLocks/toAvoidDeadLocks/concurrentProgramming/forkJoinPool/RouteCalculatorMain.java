@@ -28,7 +28,7 @@ class RouteCalculator extends RecursiveTask<Integer> {
     }
 }
 
-public class Main {
+public class RouteCalculatorMain {
     public static void main(String[] args) {
         ForkJoinPool pool = ForkJoinPool.commonPool();
         int[] orders = new int[100]; // Dummy data

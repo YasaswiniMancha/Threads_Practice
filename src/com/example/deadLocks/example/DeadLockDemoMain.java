@@ -37,3 +37,10 @@ class DeadlockDemo {
 	}
 }
 
+
+
+public class DeadLockDemoMain {
+	public static void main(String[] args) {
+		new DeadlockDemo().startThreads();
+	}
+}

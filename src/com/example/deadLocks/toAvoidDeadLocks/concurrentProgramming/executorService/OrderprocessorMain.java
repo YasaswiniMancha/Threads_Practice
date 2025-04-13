@@ -12,7 +12,7 @@ class OrderProcessor implements Runnable {
     }
 }
 
-public class Main {
+public class OrderprocessorMain {
     public static void main(String[] args) {
         ExecutorService executor = Executors.newFixedThreadPool(10); // 10 threads
         for (int i = 1; i <= 20; i++) {

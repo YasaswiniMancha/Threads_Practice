@@ -1,0 +1,21 @@
+Scenario: Order Service lo deadlock jarigindi—Order thread restaurant inventory lock chesindi, 
+                    restaurant thread order confirmation kosam wait chestundi.
+Solution: Deadlock detect cheyyadaniki tools use cheyyali.
+
+JConsole:
+-----------
+Run chese app ki JConsole connect cheyyi (JDK lo vuntundi).
+"Threads" tab lo deadlocked threads ni check cheyyi.
+Example: OrderThread and RestaurantThread mutual wait lo vunte, JConsole alert chestundi.
+
+VisualVM:
+-----------
+VisualVM tho thread dump teesuko.
+Dump lo "BLOCKED" state threads ni analyze cheyyi.
+
+Sample output:
+-------------
+OrderThread-1: waiting for Restaurant-1
+Restaurant-1: waiting for OrderThread-1
+Fix: Lock order change cheyyali (like Resource Ordering below).
+Real Project Tip: Production lo monitoring tools (ex: Prometheus, Grafana) tho integrate chesi deadlocks ni track cheyyali.
